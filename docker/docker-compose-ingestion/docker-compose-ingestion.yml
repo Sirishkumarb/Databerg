@@ -17,8 +17,8 @@ volumes:
   es-data:
 services:  
   ingestion:
-    container_name: openmetadata_ingestion
-    image: docker.getcollate.io/openmetadata/ingestion:1.4.0-SNAPSHOT
+    container_name: databerg_ingestion
+    image: sirishkumarb/ingestion-1.2.5
     environment:
       AIRFLOW__API__AUTH_BACKENDS: "airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session"
       AIRFLOW__CORE__EXECUTOR: LocalExecutor

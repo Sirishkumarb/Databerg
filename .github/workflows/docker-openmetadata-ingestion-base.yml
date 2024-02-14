@@ -64,11 +64,11 @@ jobs:
         id:  input_check
         run: |
             if ${{ github.event_name == 'release' }}; then
-                echo "tags=openmetadata/ingestion-base:${{ env.input }},openmetadata/ingestion-base:latest" >> $GITHUB_OUTPUT
+                echo "tags=sirishkumarb/ingestion-base:${{ env.input }},sirishkumarb/ingestion-base:latest" >> $GITHUB_OUTPUT
             elif ${{ github.event_name == 'workflow_dispatch' && inputs.push_latest_tag_to_release }}; then
-                echo "tags=openmetadata/ingestion-base:${{inputs.tag}},openmetadata/ingestion-base:latest" >> $GITHUB_OUTPUT
+                echo "tags=sirishkumarb/ingestion-base:${{inputs.tag}},sirishkumarb/ingestion-base:latest" >> $GITHUB_OUTPUT
             else
-                echo "tags=openmetadata/ingestion-base:${{ inputs.tag }}" >> $GITHUB_OUTPUT
+                echo "tags=sirishkumarb/ingestion-base:${{ inputs.tag }}" >> $GITHUB_OUTPUT
             fi
 
       - name: Build and push if event is workflow_dispatch and input is checked

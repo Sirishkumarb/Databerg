@@ -52,11 +52,11 @@ jobs:
         id:  input_check
         run: |
             if ${{ github.event_name == 'release' }}; then
-                echo "tags=openmetadata/db:${{ env.input }},openmetadata/db:latest" >> $GITHUB_OUTPUT
+                echo "tags=sirishkumarb/databerg:${{ env.input }},sirishkumarb/databerg:latest" >> $GITHUB_OUTPUT
             elif ${{ github.event_name == 'workflow_dispatch' && inputs.push_latest_tag_to_release }}; then
-                echo "tags=openmetadata/db:${{inputs.tag}},openmetadata/db:latest" >> $GITHUB_OUTPUT
+                echo "tags=sirishkumarb/databerg:${{inputs.tag}},sirishkumarb/databerg:latest" >> $GITHUB_OUTPUT
             else
-                echo "tags=openmetadata/db:${{ inputs.tag }}" >> $GITHUB_OUTPUT
+                echo "tags=sirishkumarb/databerg:${{ inputs.tag }}" >> $GITHUB_OUTPUT
             fi
 
       - name: Build and push if event is workflow_dispatch and input is checked

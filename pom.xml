@@ -47,9 +47,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:Open-Metadata/OpenMetadata</connection>
-    <developerConnection>scm:git:git@github.com:Open-Metadata/OpenMetadata</developerConnection>
-    <url>scm:git:git@github.com:Open-Metadata/OpenMetadata</url>
+    <connection>scm:git:git@github.com:Sirishkumarb/Databerg</connection>
+     <developerConnection>scm:git:git@github.com:Sirishkumarb/Databerg</developerConnection>
+    <url>scm:git:git@github.com:Sirishkumarb/Databerg</url>
   </scm>
 
   <developers>

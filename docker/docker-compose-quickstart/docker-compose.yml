@@ -17,8 +17,8 @@ volumes:
   es-data:
 services:
   mysql:
-    container_name: openmetadata_mysql
-    image: docker.getcollate.io/openmetadata/db:1.4.0-SNAPSHOT
+    container_name: databerg_mysql
+    image: sirishkumarb/databerg
     command: "--sort_buffer_size=10M"
     restart: always
     environment:
@@ -59,7 +59,7 @@ services:
 
   execute-migrate-all:
     container_name: execute_migrate_all
-    image: docker.getcollate.io/openmetadata/server:1.4.0-SNAPSHOT
+    image: sirishkumarb/databerg-server-1.2.5
     command: "./bootstrap/openmetadata-ops.sh migrate"
     environment:
       OPENMETADATA_CLUSTER_NAME: ${OPENMETADATA_CLUSTER_NAME:-openmetadata}
@@ -248,7 +248,7 @@ services:
   openmetadata-server:
     container_name: openmetadata_server
     restart: always
-    image: docker.getcollate.io/openmetadata/server:1.4.0-SNAPSHOT
+    image: sirishkumarb/databerg-server-1.2.5
     environment:
       OPENMETADATA_CLUSTER_NAME: ${OPENMETADATA_CLUSTER_NAME:-openmetadata}
       SERVER_PORT: ${SERVER_PORT:-8585}
@@ -437,7 +437,7 @@ services:
 
   ingestion:
     container_name: openmetadata_ingestion
-    image: docker.getcollate.io/openmetadata/ingestion:1.4.0-SNAPSHOT
+    image: sirishkumarb/ingestion-1.2.5
     depends_on:
       elasticsearch:
         condition: service_started

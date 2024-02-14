@@ -17,8 +17,8 @@ volumes:
   es-data:
 services:
   postgresql:
-    container_name: openmetadata_postgresql
-    image: docker.getcollate.io/openmetadata/postgresql:1.4.0-SNAPSHOT
+    container_name: databerg_postgresql
+    image: sirishkumarb/postgresql
     restart: always
     command: "--work_mem=10MB"
     environment:
@@ -61,7 +61,7 @@ services:
 
   execute-migrate-all:
     container_name: execute_migrate_all
-    image: docker.getcollate.io/openmetadata/server:1.4.0-SNAPSHOT
+    image: sirishkumarb/databerg-server-1.2.5
     command: "./bootstrap/openmetadata-ops.sh migrate"
     environment:
       OPENMETADATA_CLUSTER_NAME: ${OPENMETADATA_CLUSTER_NAME:-openmetadata}
@@ -248,9 +248,9 @@ services:
       - app_net
 
   openmetadata-server:
-    container_name: openmetadata_server
+    container_name: databerg_server
     restart: always
-    image: docker.getcollate.io/openmetadata/server:1.4.0-SNAPSHOT
+    image: sirishkumarb/databerg-server-1.2.5
     environment:
       OPENMETADATA_CLUSTER_NAME: ${OPENMETADATA_CLUSTER_NAME:-openmetadata}
       SERVER_PORT: ${SERVER_PORT:-8585}
@@ -438,8 +438,8 @@ services:
       test: [ "CMD", "wget", "-q", "--spider",  "http://localhost:8586/healthcheck" ]
 
   ingestion:
-    container_name: openmetadata_ingestion
-    image: docker.getcollate.io/openmetadata/ingestion:1.4.0-SNAPSHOT
+    container_name: databerg_ingestion
+    image: sirishkumarb/ingestion-1.2.5
     depends_on:
       elasticsearch:
         condition: service_started
