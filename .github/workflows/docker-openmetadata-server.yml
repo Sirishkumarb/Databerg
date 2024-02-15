@@ -150,11 +150,11 @@ jobs:
         id:  input_check
         run: |
             if ${{ github.event_name == 'release' }}; then
-                echo "tags=sirishkumarb/databerg-server-1.2.5:${{ env.DOCKER_RELEASE_TAG }},sirishkumarb/databerg-server-1.2.5:latest" >> $GITHUB_OUTPUT
+                echo "tags=sirishkumarb/databerg-server:${{ env.DOCKER_RELEASE_TAG }},sirishkumarb/databerg-server:latest" >> $GITHUB_OUTPUT
             elif ${{ github.event_name == 'workflow_dispatch' && inputs.push_latest_tag_to_release }}; then
-                echo "tags=sirishkumarb/databerg-server-1.2.5:${{ env.DOCKER_RELEASE_TAG }},sirishkumarb/databerg-server-1.2.5:latest" >> $GITHUB_OUTPUT
+                echo "tags=sirishkumarb/databerg-server:${{ env.DOCKER_RELEASE_TAG }},sirishkumarb/databerg-server:latest" >> $GITHUB_OUTPUT
             else
-                echo "tags=sirishkumarb/databerg-server-1.2.5:${{ env.DOCKER_RELEASE_TAG }}" >> $GITHUB_OUTPUT
+                echo "tags=sirishkumarb/databerg-server:${{ env.DOCKER_RELEASE_TAG }}" >> $GITHUB_OUTPUT
             fi
 
       - name: Build and push if event is workflow_dispatch and input is checked
