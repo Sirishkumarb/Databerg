@@ -64,7 +64,7 @@ jobs:
     steps:
       - name: Check trigger type
         id: check_trigger
-        run: echo "DOCKER_RELEASE_TAG=1.3.0" >> $GITHUB_OUTPUT
+        run: echo "DOCKER_RELEASE_TAG=1.4.0-SNAPSHOT" >> $GITHUB_OUTPUT
         
       - name: Download application from Artifiact
         uses: actions/download-artifact@v2
@@ -99,7 +99,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: attach_release
         run: |
-          echo "UPLOAD_URL=$(curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/surenganne/OpenMetadata/releases/tags/${{ inputs.DOCKER_RELEASE_TAG }}-release | jq .upload_url | tr -d '"' )" >> $GITHUB_OUTPUT
+          echo "UPLOAD_URL=$(curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/open-metadata/OpenMetadata/releases/tags/${{ inputs.DOCKER_RELEASE_TAG }}-release | jq .upload_url | tr -d '"' )" >> $GITHUB_OUTPUT
 
       - name: Download application from Artifact
         uses: actions/download-artifact@v2
@@ -129,7 +129,7 @@ jobs:
       - name: Check trigger type
         id: check_trigger
         if: ${{ env.DOCKER_RELEASE_TAG == '' }} 
-        run: echo "DOCKER_RELEASE_TAG=1.3.0" >> $GITHUB_ENV
+        run: echo "DOCKER_RELEASE_TAG=1.4.0-SNAPSHOT" >> $GITHUB_ENV
 
       - name: Check out the Repo
         uses: actions/checkout@v3
